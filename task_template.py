@@ -29,3 +29,10 @@ other freshwater genera and herring similar to those
 in modern oceans. Other fish such as paddlefish,
 garpike and stingray are also present.'''
 ]
+
+
+
+
+a = "a"
+
+print(a.islower())

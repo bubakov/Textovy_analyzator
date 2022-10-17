@@ -59,34 +59,54 @@ garpike and stingray are also present.'''
 
 # vyber cisla textu uzivatelem
 vyber = int(input("Enter a number btw. 1 and 3 to select:"))
-#print(type(TEXTS))
-uprava = TEXTS[vyber - 1]
-print(uprava)
-hledanaSlova = []
-hledanaVelkaSlova = []
-hledanaMalaSlova = []
-count = 0
+
+# uprava textu
+uprava = TEXTS[vyber - 1].split()
+
+# pomocne promenne
+count_prvni_velke = 0
+count_vsechna_velka = 0
+count_vsechna_mala = 0
+count_cisla = 0
+suma = 0
 
 # pokud je vybran je ze tri textu, pouzije se nasledujici kod
 if 1 <= vyber <= 3:
     # vypocita pocet slov v textu
-    pocet_slov = len(uprava.split())
+    pocet_slov = len(uprava)
     print(f'There are {pocet_slov} words in the selected text.')
     # najde prvni velke pismeno ve slovu a napise cetnost vyskytu
-    for i in uprava.split():
+    for i in uprava:
         if i[0].isupper():
-            hledanaSlova.append(i)
-            print(hledanaSlova)
+            count_prvni_velke += 1
+    print(f'There are {count_prvni_velke} titlecase words.')
     
-    for i in uprava.split():
+    # najde slova se vsemi velkymi pismeny a vypise jejich pocet
+    for i in uprava:
         if i.isupper() and i.isalpha():
-            hledanaVelkaSlova.append(i)
-            print(len(hledanaVelkaSlova))
+            count_vsechna_velka += 1
+    print(f'There are {count_vsechna_velka} uppercase words.')
 
-    for i in uprava.split():
+    # najde slova se vsemi malymi pismeny a vypise jejich pocet
+    for i in uprava:
         if i.islower() and i.isalpha():
-            hledanaMalaSlova.append(i)
-            print(len(hledanaMalaSlova))
+            count_vsechna_mala += 1
+    print(f'There are {count_vsechna_mala} lowercase words.')
+
+    # najde a vypise pocet cisel v textu
+    for i in uprava:
+        if i.isnumeric():
+            count_cisla += 1
+    print(f'There are {count_cisla} numeric strings.')
+
+    # najde cisla v textu a udela jejich sumu
+    for i in uprava:
+        if i.isdigit():
+             suma = suma + int(i)
+    print(f'There are {suma} numeric strings.')
+            
+
+            
         
         
 
