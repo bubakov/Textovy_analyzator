@@ -6,6 +6,7 @@ email: comodore@seznam.cy
 discord: bubak#2787
 """
 
+ 
 #seznam registrovanych uzivatelu ve slovniku 
 
 users = {'bob':  '123',
@@ -69,6 +70,7 @@ count_vsechna_velka = 0
 count_vsechna_mala = 0
 count_cisla = 0
 suma = 0
+d = {}
 
 # pokud je vybran je ze tri textu, pouzije se nasledujici kod
 if 1 <= vyber <= 3:
@@ -104,13 +106,26 @@ if 1 <= vyber <= 3:
         if i.isdigit():
              suma = suma + int(i)
     print(f'There are {suma} numeric strings.')
+
+    import matplotlib.pyplot as plt
+    for suffix in (',', '.'):
+        uprava = [w.removesuffix(suffix) for w in uprava]
+    print(uprava)
+    
+    for word in uprava:
+        l = len(word)
+        d[l] = d.get(l, 0) + 1
+    print(d)
+
+    lenghts, counts = zip(*d.items())
+    print(lenghts, counts)
+
+    plt.bar(lenghts, counts)
+    plt.xticks(range(1, max(lenghts) + 1))
+    plt.xlabel('Word Lengths')
+    plt.ylabel('Word Counts')
+    plt.show()
             
-
-            
-        
-        
-
-
 
 else:
     print("Neumis pocitat do tri?")
