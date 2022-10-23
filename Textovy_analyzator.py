@@ -1,5 +1,9 @@
 """
+projekt_1.py: prvni projekt do Engeto Online Python Akademie
 
+author: Jakub Filip
+email: comodore@seznam.cy
+discord: bubak#2787
 """
 # import pro zaverecny graf
 import matplotlib.pyplot as plt
