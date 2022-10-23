@@ -1,6 +1,10 @@
 
 '''
-author =
+projekt_1.py: prvni projekt do Engeto Online Python Akademie
+
+author: Jakub Filip
+email: comodore@seznam.cy
+discord: bubak#2787
 '''
 TEXTS = ['''
 Situated about 10 miles west of Kemmerer,
@@ -33,6 +37,19 @@ garpike and stingray are also present.'''
 
 
 
-a = "a"
+from vokativ import *
+pohlavi = input("zadej svoje jmeno: ")
+pohlavi = vokativ(pohlavi, woman = True)
+print(pohlavi)
 
-print(a.islower())
+
+slovo_uzivatel = input("Zadej slovo: ")
+
+while True:
+    slovo_uzivatel = input("Zadej slovo: ")
+    if slovo_uzivatel == slovo_uzivatel[::-1]:
+        print('Je to palindrom')
+    else:
+        print('Neni to palindrom, zkus to znovu')
+
+

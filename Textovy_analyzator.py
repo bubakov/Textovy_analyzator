@@ -1,12 +1,9 @@
 """
-projekt_1.py: prvni projekt do Engeto Online Python Akademie
 
-author: Jakub Filip
-email: comodore@seznam.cy
-discord: bubak#2787
 """
+# import pro zaverecny graf
+import matplotlib.pyplot as plt
 
- 
 #seznam registrovanych uzivatelu ve slovniku 
 
 users = {'bob':  '123',
@@ -15,8 +12,8 @@ users = {'bob':  '123',
          'liz': 'pass123'}
 
 #vyzada hodnoty od uzivatele
-username = input("Zadejte uzivatelske jmeno".upper())
-password = input("Zadejte heslo".upper())
+username = input("Zadejte uzivatelske jmeno ".upper())
+password = input("Zadejte heslo ".upper())
 
 # overi, zda je spravne heslo prirazene k uzivatelskemu jmenu
 if users.get(username) == password:
@@ -28,6 +25,7 @@ else:
     # ukonci program pokud neni uzivatel ve slovniku nebo je zadana 
     # spatna kombinace jmena a hesla
     print(f'Unregistered user: {username}, terminating program')
+    exit()
     
     # nova promenna text
 TEXTS = ['''
@@ -107,25 +105,35 @@ if 1 <= vyber <= 3:
              suma = suma + int(i)
     print(f'There are {suma} numeric strings.')
 
-    import matplotlib.pyplot as plt
+    # odstrani carky a tecky z textu
     for suffix in (',', '.'):
         uprava = [w.removesuffix(suffix) for w in uprava]
-    print(uprava)
     
+    # prida do prazdneho slovniku d delku slov a cetnost jejich vysktu    
     for word in uprava:
-        l = len(word)
-        d[l] = d.get(l, 0) + 1
-    print(d)
-
+        length = len(word)
+        d[length] = d.get(length, 0) + 1
+    
+    # rozdeli mi slovnik d na dva tuply
     lenghts, counts = zip(*d.items())
-    print(lenghts, counts)
+    
+    # vypise graf
+    for i in range(1, max(d.keys()) + 1):
+        if i in d:
+            cnt = d[i]
+        else: 
+            cnt = 0
+        print(f'{i : >3}|{"*" * cnt : <18}|{cnt}') 
+    
 
+    # graf v pyplotu mnohem hezci
+    # hodnoty delka a cetnost
     plt.bar(lenghts, counts)
+    # rozsah osy x. 1 pridana pro prehlednost
     plt.xticks(range(1, max(lenghts) + 1))
+    # popisky os
     plt.xlabel('Word Lengths')
     plt.ylabel('Word Counts')
+    # zobrazi graf
     plt.show()
-            
 
-else:
-    print("Neumis pocitat do tri?")
